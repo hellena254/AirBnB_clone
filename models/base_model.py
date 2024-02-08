@@ -1,12 +1,15 @@
 #!/usr/bin/python3
+"""The BaseModel Class"""
+import models
 from datetime import datetime
 from uuid import uuid4
+
 
 class BaseModel:
 
 	"""class constructor"""
 	def __init__(self, *args, **kwargs):
-		"""define the attrributes:
+		"""define the attributes:
 			id, created_at, updated_at
 		"""
 
@@ -25,10 +28,12 @@ class BaseModel:
 			self.id = str(uuid4())
 			self.created_at = datetime.now()
 			self.updated_at = datetime.now()
+			models.storage.new(self)
 
 	def save(self):
 		"""update the updated_time with the current dat e and time"""
 		updated_at = datetime.now()
+		models.storage.save()
 	
 	def to_dict(self):
 		"""returns a dictionary containing all key/value of __dict__

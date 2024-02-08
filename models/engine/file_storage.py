@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """A file storage class"""
 import json
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -39,4 +40,17 @@ class FileStorage:
 			with open(FileStorage.__file_path, "w") as json_file:
 				json.dump(ser_obj, json_file)
 
-
+	def reload(self):
+		"""
+		deserializes the JSON file to __objects if the path to the JSON file exists 
+		otherwise, do nothing
+		"""
+		try:
+			with open(FileStorage.__file_path, "r") as json_file:
+		for value in json.load(json_file).items():
+			class_name = value["__class__"]
+			# verify the input to eval() and then validate it
+			if isinstance(class_name, str) and type(eval(class_name)) == type:
+			self.new(eval(class_name)(value))
+		except FileNotFoundError:
+			pass
