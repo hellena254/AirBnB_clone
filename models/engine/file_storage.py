@@ -47,10 +47,10 @@ class FileStorage:
 		"""
 		try:
 			with open(FileStorage.__file_path, "r") as json_file:
-		for value in json.load(json_file).items():
-			class_name = value["__class__"]
-			# verify the input to eval() and then validate it
-			if isinstance(class_name, str) and type(eval(class_name)) == type:
-			self.new(eval(class_name)(value))
+				for value in json.load(json_file).items():
+					class_name = value["__class__"]
+					# verify the input to eval() and then validate it
+					if isinstance(class_name, str) and type(eval(class_name)) == type:
+						self.new(eval(class_name)(value))
 		except FileNotFoundError:
 			pass
