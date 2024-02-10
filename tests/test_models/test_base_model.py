@@ -8,13 +8,9 @@ from models.base_model import BaseModel
 
 class TestBaseModel(unittest.TestCase):
 	"""Test cases as follows"""
-	def setUpBasemodel(self):
+	def setUp(self):
 		"""set up the test env"""
 		self.base_model = BaseModel()
-
-	def tearDownBaseModel(self):
-		""" Tear down the test env"""
-		del self.base_model
 
 	def test_init(self):
 		"""Test initialization"""
@@ -26,41 +22,21 @@ class TestBaseModel(unittest.TestCase):
 		"""Test the save method of the BaseModel"""
 		first_updated_at = self.base_model.updated_at
 		self.base_model.save()
-		self.assertNotEqual(first-updated_at, self.base_model.updated_at)
+		self.assertNotEqual(first_updated_at, self.base_model.updated_at)
 
 	def test_to_dict(self):
 		"""Test the to_dict method of the Basemodel"""
-		_dict = self.base_model.to_dict()
-		self.assertIsInstance(_dict, dict)
-		self.assertIn('__class__', _dict)
-		self.assertIn('created_at', _dict)
-		self.assertIn('updated_at', _dict)
+		base_model_dict = self.base_model.to_dict()
+		self.assertIsInstance(base_model_dict, dict)
+		self.assertEqual(base_model_dict['__class__'], 'BaseModel')
+		self.assertIn('created_at', base_model_dict)
+		self.assertIn('updated_at', base_model_dict)
 
 	def test_str(self):
 		"""Test the string respresentation of the baseModel class"""
 		base_model_str = str(self.base_model)
-		self.assertIn('[BaseModel]', base_model_str)
-		self.assertIn(str(self.base_model.id), base_model_str)
+		self.assertIn('BaseModel', base_model_str)
+		self.assertIn(self.base_model.id, base_model_str)
 
 if __name__ == '__main__':
 	unittest.main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
