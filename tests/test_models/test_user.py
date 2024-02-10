@@ -15,7 +15,7 @@ class TestUser(unittest.TestCase):
 		del self.user
 
 	def test_instance(self):
-		"""Test creattion od user instance"""
+		"""Test creation of user instance"""
 		self.assertIsInstance(self.user, User)
 		self.assertIsInstance(self.user, BaseModel)
 
