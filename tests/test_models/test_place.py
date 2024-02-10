@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""Test Cases for place class"""
 import unittest
 from models.place import Place
 from datetime import datetime
