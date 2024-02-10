@@ -4,6 +4,7 @@
 """
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 
 
@@ -14,7 +15,7 @@ class HBNBCommand(cmd.Cmd):
 	"""
 	prompt = '(hbnb) '
 	#class_mapping = {'BaseModel': BaseModel}
-	class_mapping = ["BaseModel"]
+	class_mapping = ["BaseModel", "User"]
 
 	def do_quit(self, args):
 		"""Quit command to exit the program
