@@ -3,18 +3,17 @@
 import unittest
 import json
 from datetime import datetime
-from models.base_model import BaseModel
-
+import models.base_model
 
 class TestBaseModel(unittest.TestCase):
 	"""Test cases as follows"""
 	def setUp(self):
 		"""set up the test env"""
-		self.base_model = BaseModel()
+		self.base_model = models.base_model.BaseModel()
 
 	def test_init(self):
 		"""Test initialization"""
-		self.assertIsInstance(self.base_model, BaseModel)
+		self.assertIsInstance(self.base_model, models.base_model.BaseModel)
 		self.assertIsInstance(self.base_model.created_at, datetime)
 		self.assertIsInstance(self.base_model.updated_at, datetime)
 

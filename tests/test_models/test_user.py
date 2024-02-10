@@ -8,19 +8,19 @@ class TestUser(unittest.TestCase):
 	"""Tests cases as follows"""
 	def setUp(self):
 		"""Set up the test environment"""
-		self.user = User(email="hellen@example.com", password="pass.123", first_name="Hellen", last_name="Atieno")
+		self.user = User()
 
-#	def test_instance(self):
-#		"""Test creation of user instance"""
-#		self.assertIsInstance(self.user, User)
-#		self.assertIsInstance(self.user, BaseModel)
+	def test_instance(self):
+		"""Test if user instance is created successfully"""
+		self.assertIsInstance(self.user, User)
+		self.assertTrue(hasattr(self.user, 'id'))
+		self.assertTrue(hasattr(self.user, 'created_at'))
+		self.assertTrue(hasattr(self.user, 'updated_at'))
+		self.assertTrue(hasattr(self.user, 'email'))
+		self.assertTrue(hasattr(self.user, 'password'))
+		self.assertTrue(hasattr(self.user, 'first_name'))
+		self.assertTrue(hasattr(self.user, 'last_name'))
 
-#	def test_attributes(self):
-#		"""Test the user attributes"""
-#		self.assertEqual(self.user.email, "hellen@example.com")
-#		self.assertEqual(self.user.password, "pass.123")
-#		self.assertEqual(self.user.first_name, "Hellen")
-#		self.assertEqual(self.user.last_name, "Atieno")
 
 if __name__ == '__main__':
 	unittest.main()
