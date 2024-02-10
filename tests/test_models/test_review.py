@@ -8,7 +8,7 @@ class TestReview(unittest.TestCase):
 	"""Tests cases as follows"""
 	def setUpReview(self):
 		"""Set up the test environment"""
-		self.review = Review(place_id="254", user_id = "1" text="satisfied")
+		self.review = Review(place_id="254", user_id = "1", text="satisfied")
 
 	def tearDownReview(self):
 		"""Tear down the test environment"""
